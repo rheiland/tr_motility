@@ -209,6 +209,14 @@ def fill_gui_params(config_file):
     user_tab.fill_gui(xml_root)
 
 
+def run_done_func_colab(s, rdir):
+    # with debug_view:
+    #     print('run_done_func: results in', rdir)
+    
+    sub.update(rdir)
+    run_button.description = "Run"
+    run_button.button_style='success'
+
 def run_done_func(s, rdir):
     # with debug_view:
     #     print('run_done_func: results in', rdir)
@@ -357,7 +365,7 @@ if nanoHUB_flag:
 else:
     if (hublib_flag):
         run_button = RunCommand(start_func=run_sim_func,
-                            done_func=run_done_func,
+                            done_func=run_done_func_colab,
                             cachename='Motility_Training_App',
                             showcache=False,
                             outcb=outcb)  
