@@ -390,7 +390,8 @@ tabs = widgets.Tab(children=[about_tab.tab, config_tab.tab, microenv_tab.tab, us
 
 homedir = os.getcwd()
 
-tool_title = widgets.Label(r'\(\textbf{Motility_Training_App}\)')
+# tool_title = widgets.Label(r'\(\textbf{Motility_Training_App}\)')
+tool_title = widgets.Label('Motility_Training_App')
 if nanoHUB_flag or hublib_flag:
     # define this, but don't use (yet)
     remote_cb = widgets.Checkbox(indent=False, value=False, description='Submit as Batch Job to Clusters/Grid')
