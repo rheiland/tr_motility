@@ -5,6 +5,7 @@ import glob
 import shutil
 import math
 import datetime
+import time
 import tempfile
 from about import AboutTab
 from config import ConfigTab
@@ -210,6 +211,7 @@ def fill_gui_params(config_file):
 
 
 def run_done_func_colab(s, rdir):
+    global run_button
     # with debug_view:
     #     print('run_done_func: results in', rdir)
     
@@ -234,7 +236,9 @@ def run_done_func(s, rdir):
     # new results are available, so update dropdown
     # with debug_view:
     #     print('run_done_func: ---- before updating read_config.options')
-    read_config.options = get_config_files()
+
+    # read_config.options = get_config_files()  # rwh - not for Colab
+
     # with debug_view:
     #     print('run_done_func: ---- after updating read_config.options')
 
@@ -276,6 +280,7 @@ def run_sim_func(s):
         # something on NFS causing issues...
         tname = tempfile.mkdtemp(suffix='.bak', prefix='tmpdir_', dir='.')
         shutil.move('tmpdir', tname)
+    time.sleep(2)  # rwh - Colab help??
     os.makedirs('tmpdir')
 
     # write the default config file to tmpdir
