@@ -213,8 +213,8 @@ def fill_gui_params(config_file):
 
 def run_done_func_colab(s, rdir):
     global run_button
-    # with debug_view:
-    #     print('run_done_func: results in', rdir)
+    with debug_view:
+        print('run_done_func: results in', rdir)
     
     sub.update(rdir)
     run_button.description = "Run"
@@ -316,7 +316,7 @@ def run_sim_func(s):
 def outcb(s):
     # This is called when new output is received.
     # Only update file list for certain messages: 
-    # print("outcb(): s=",s)
+    print("outcb(): s=",s)
     if "simulat" in s:    # "current simulated time: 60 min (max: 14400 min)"
         # New Data. update visualizations
         # svg.update('')
@@ -379,8 +379,8 @@ else:
         run_button = RunCommand(start_func=run_sim_func,
                             done_func=run_done_func_colab,
                             cachename='Motility_Training_App',
-                            showcache=False)
-                            # outcb=outcb)  
+                            showcache=False,
+                            outcb=outcb)  
     else:
         run_button = widgets.Button(
             description='Run',
