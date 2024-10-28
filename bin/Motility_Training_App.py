@@ -364,7 +364,7 @@ def run_button_cb(s):
 
     run_button.description = "WAIT..."
     subprocess.run(["../bin/myproj", "config.xml"])
-    sub.max_frames.value = 42
+    sub.max_frames.value = int(config_tab.tmax.value / config_tab.svg_interval.value)    # 42
     run_button.description = "Run"
 
     # print(result.stdout.decode())
