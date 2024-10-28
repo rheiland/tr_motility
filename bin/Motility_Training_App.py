@@ -362,12 +362,13 @@ def run_button_cb(s):
     # result = subprocess.Popen(["../bin/myproj", "config.xml"], stdout=subprocess.PIPE, text=True)
     # result = subprocess.run(["../bin/myproj", "config.xml"])
 
-    run_button.description = "wait..."
+    run_button.description = "WAIT..."
     subprocess.run(["../bin/myproj", "config.xml"])
+    sub.max_frames.value = 42
     run_button.description = "Run"
 
     # print(result.stdout.decode())
-    print(result)
+    # print(result)
 
     
 
@@ -430,8 +431,8 @@ else:
     acc = widgets.Accordion(children=[cpp_output])
     acc.set_title(0, 'Output')
     top_row = widgets.HBox(children=[tool_title])
-    # gui = widgets.VBox(children=[top_row, tabs, run_button])
-    gui = widgets.VBox(children=[top_row, tabs, run_button, acc])
+    gui = widgets.VBox(children=[top_row, tabs, run_button])
+    # gui = widgets.VBox(children=[top_row, tabs, run_button, acc])
     fill_gui_params("data/PhysiCell_settings.xml")
 
 
