@@ -19,6 +19,7 @@ import subprocess
 from debug import debug_view
 
 hublib_flag = True
+# hublib_flag = False
 if platform.system() != 'Windows':
     try:
     #    print("Trying to import hublib.ui")
@@ -356,7 +357,13 @@ def run_button_cb(s):
     # sub.update_params(config_tab)
     sub.update(tdir)
 
-    subprocess.Popen(["../bin/myproj", "config.xml"])
+    # subprocess.Popen(["../bin/myproj", "config.xml"])
+    result = subprocess.Popen(["../bin/myproj", "config.xml"], stdout=subprocess.PIPE)
+
+    # print(result.stdout.decode())
+    print(result)
+
+    
 
 
 #-------------------------------------------------
@@ -372,15 +379,15 @@ else:
         run_button = RunCommand(start_func=run_sim_func,
                             done_func=run_done_func_colab,
                             cachename='Motility_Training_App',
-                            showcache=False,
-                            outcb=outcb)  
+                            showcache=False)
+                            # outcb=outcb)  
     else:
         run_button = widgets.Button(
             description='Run',
             button_style='success',  # 'success', 'info', 'warning', 'danger' or ''
             tooltip='Run a simulation',
         )
-        run_button.on_click(run_button_cb)
+        run_button.on_click(run_button_cb)   # dumb Run 
 
 
 if nanoHUB_flag or hublib_flag:
