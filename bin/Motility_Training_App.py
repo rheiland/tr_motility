@@ -359,7 +359,12 @@ def run_button_cb(s):
 
     # subprocess.Popen(["../bin/myproj", "config.xml"])   # running locally, outputs to Terminal
     # result = subprocess.Popen(["../bin/myproj", "config.xml"], stdout=subprocess.PIPE)
-    result = subprocess.Popen(["../bin/myproj", "config.xml"], stdout=subprocess.PIPE, text=True)
+    # result = subprocess.Popen(["../bin/myproj", "config.xml"], stdout=subprocess.PIPE, text=True)
+    # result = subprocess.run(["../bin/myproj", "config.xml"])
+
+    run_button.description = "wait..."
+    subprocess.run(["../bin/myproj", "config.xml"])
+    run_button.description = "Run"
 
     # print(result.stdout.decode())
     print(result)
