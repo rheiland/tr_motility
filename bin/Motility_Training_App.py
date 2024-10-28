@@ -18,8 +18,8 @@ import platform
 import subprocess
 from debug import debug_view
 
-hublib_flag = True
-# hublib_flag = False
+# hublib_flag = True
+hublib_flag = False
 if platform.system() != 'Windows':
     try:
     #    print("Trying to import hublib.ui")
@@ -357,11 +357,11 @@ def run_button_cb(s):
     # sub.update_params(config_tab)
     sub.update(tdir)
 
-    # subprocess.Popen(["../bin/myproj", "config.xml"])
+    # subprocess.Popen(["../bin/myproj", "config.xml"])   # running locally, outputs to Terminal
     result = subprocess.Popen(["../bin/myproj", "config.xml"], stdout=subprocess.PIPE)
 
-    # print(result.stdout.decode())
-    print(result)
+    print(result.stdout.decode())
+    # print(result)
 
     
 
@@ -420,8 +420,12 @@ if nanoHUB_flag or hublib_flag:
     gui = widgets.VBox(children=[top_row, tabs, run_button.w])
     fill_gui_params(read_config.options['DEFAULT'])
 else:
+    cpp_output = widgets.Output()
+    acc = widgets.Accordion(children=[cpp_output])
+    acc.set_title(0, 'Output')
     top_row = widgets.HBox(children=[tool_title])
-    gui = widgets.VBox(children=[top_row, tabs, run_button])
+    # gui = widgets.VBox(children=[top_row, tabs, run_button])
+    gui = widgets.VBox(children=[top_row, tabs, run_button, acc])
     fill_gui_params("data/PhysiCell_settings.xml")
 
 
