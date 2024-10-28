@@ -358,10 +358,11 @@ def run_button_cb(s):
     sub.update(tdir)
 
     # subprocess.Popen(["../bin/myproj", "config.xml"])   # running locally, outputs to Terminal
-    result = subprocess.Popen(["../bin/myproj", "config.xml"], stdout=subprocess.PIPE)
+    # result = subprocess.Popen(["../bin/myproj", "config.xml"], stdout=subprocess.PIPE)
+    result = subprocess.Popen(["../bin/myproj", "config.xml"], stdout=subprocess.PIPE, text=True)
 
-    print(result.stdout.decode())
-    # print(result)
+    # print(result.stdout.decode())
+    print(result)
 
     
 
